@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>API REQUEST</title>
+        <style>
+            #inputContainer {
+                display: flex;
+                gap: 10%;
+                width:80%;
+                margin: auto;
+            }
+            #inputTitle,#inputAuthor,#inputComments,#addButton {
+                padding: 10px 20px;
+                box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+            }
+            #addButton {
+                cursor: pointer;
+            }
+            #container {
+                margin-top: 50px;
+                display: grid;
+                grid-template-columns: repeat(3,22%);
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                grid-gap: 5%;
+            }
+            #div-inside {
+                border: 1px solid #000;
+                padding-bottom: 20px;
+				margin-bottom: 20px;
+                box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+            }
+            .books {
+                text-align: center;
+                font-size: 45px;
+                font-family:'Courier New', Courier, monospace;
+            }
+        </style>
+	</head>
+	<body>
+        <h1 class="books">Cool Books</h1>
+        <div id="inputContainer">
+		<input type="text" placeholder="Enter title" id="inputTitle" />
+		<input type="text" placeholder="Enter author" id="inputAuthor" />
+		<input type="text" placeholder="Enter comments" id="inputComments" />
+        
+		<button id="addButton" onclick="addButtonFunc()">ADD</button>
+        </div>
+		<div id="container"></div>
+	</body>
+</html>
+
+<script>
+	var url = "http://localhost:3000/posts";
+	fetch(url)
+		.then((res) => {
+			//console.log(res);
+			return res.json();
+		})
+		.then((forJson) => {
+			// console.log(forJson);
+			appendProduct(forJson);
+		})
+		.catch((err) => console.log(err));
+
+	let container = document.getElementById("container");
+	function appendProduct(product) {
+		product.forEach((el) => {
+			console.log(el);
+			let divInside = document.createElement("div");
+            divInside.id = "div-inside";
+			let divbook = document.createElement("p");
+			divbook.innerHTML = el.book;
+			let divAuthor = document.createElement("p");
+			divAuthor.innerHTML = el.author;
+
+			let comments = document.createElement("comments");
+			comments.innerHTML = el.comments;
+			divInside.append(divbook, divAuthor, comments);
+			container.append(divInside);
+		});
+	}
+	var inputTitle = document.getElementById("inputTitle");
+	var inputAuthor = document.getElementById("inputAuthor");
+
+	function addButtonFunc() {
+		let _data = {
+			book: inputTitle.value,
+			author: inputAuthor.value,
+            comments: inputComments.value,
+		};
+
+		fetch("http://localhost:3000/posts", {
+			method: "POST",
+			body: JSON.stringify(_data),
+			headers: { "Content-type": "application/json; charset=UTF-8" },
+		})
+			.then((response) => response.json())
+			.then((json) => console.log(json))
+			.catch((err) => console.log(err));
+	}
+</script>

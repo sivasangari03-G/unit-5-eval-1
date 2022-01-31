@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "book": "Harry Potter",
+      "author": "JK Rowling",
+      "comments": [
+        "Nice Book",
+        "Epic Story"
+      ],
+      "id": 1
+    },
+    {
+      "book": "Harry Potter",
+      "author": "JK Rowling",
+      "comments": [
+        "Nice Book",
+        "Epic Story"
+      ],
+      "id": 2
+    },
+    {
+      "book": "Twilight",
+      "author": "Stephenie Meyer",
+      "comments": "Nice Cool Book",
+      "id": 3
+    },
+    {
+      "book": "harry potter and the philosopher's stone ",
+      "author": "JK Rowling",
+      "comments": "cool",
+      "id": 4
+    }
+  ]
+}
