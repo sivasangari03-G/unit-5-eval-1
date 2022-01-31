@@ -3,31 +3,25 @@
     {
       "book": "Harry Potter",
       "author": "JK Rowling",
-      "comments": [
-        "Nice Book",
-        "Epic Story"
-      ],
+      "comments": "fantastic",
       "id": 1
     },
     {
       "book": "Harry Potter",
       "author": "JK Rowling",
-      "comments": [
-        "Nice Book",
-        "Epic Story"
-      ],
+      "comments": "Cool",
       "id": 2
     },
     {
-      "book": "Twilight",
-      "author": "Stephenie Meyer",
-      "comments": "Nice Cool Book",
+      "book": "harry potter and the philosopher's stone ",
+      "author": "JK Rowling",
+      "comments": "Awesome",
       "id": 3
     },
     {
       "book": "harry potter and the philosopher's stone ",
       "author": "JK Rowling",
-      "comments": "cool",
+      "comments": "Amazing",
       "id": 4
     }
   ]
